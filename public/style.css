@@ -7,49 +7,49 @@
   font-family: 'Poppins', sans-serif;
 }
 
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
 /* 🎥 Background Video */
 #bgVideo {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
   z-index: -1;
   filter: brightness(0.4) blur(2px);
 }
 
-/* 🌐 Body Setup */
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-/* 🧊 Main Container */
+/* 💬 Chat Container */
 #container {
-  width: 92vw;
-  max-width: 880px;
+  width: 95vw;
+  max-width: 900px;
   height: 95vh;
-  display: flex;
-  flex-direction: column;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   backdrop-filter: blur(20px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 14px;
-  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* 🟢 Active Users Bar */
 #active-bar {
   background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 10px 16px;
   font-weight: 600;
   font-size: 0.95rem;
   display: flex;
@@ -57,10 +57,11 @@ body {
   align-items: center;
   border-radius: 12px;
   margin-bottom: 10px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+  text-align: center;
 }
 
-/* 💬 Chat Display */
+/* 💬 Chat Area */
 #chat-display {
   flex: 1;
   padding: 16px;
@@ -73,25 +74,26 @@ body {
   gap: 12px;
 }
 
-/* 🔶 Messages */
+/* 🔶 Message Styling */
 .msgs {
   display: flex;
   flex-direction: column;
-  max-width: 75%;
+  max-width: 80%;
   padding: 6px 10px;
   animation: fadeIn 0.3s ease-in-out;
   position: relative;
+  word-break: break-word;
 }
 
-/* Names */
+/* Sender Names */
 #self-name, #other-name {
   font-size: 0.75rem;
-  font-weight: 500;
   margin-bottom: 4px;
   opacity: 0.85;
+  font-weight: 500;
 }
 
-/* 🟨 Self Message */
+/* You */
 .self {
   align-self: flex-end;
   text-align: right;
@@ -116,7 +118,7 @@ body {
   right: 8px;
 }
 
-/* 🟦 Other Message */
+/* Others */
 .other {
   align-self: flex-start;
   text-align: left;
@@ -141,7 +143,7 @@ body {
   right: 8px;
 }
 
-/* 🔔 System Update Messages */
+/* 🔔 System Notices */
 .updates {
   align-self: center;
   background-color: rgba(255, 255, 255, 0.25);
@@ -154,7 +156,7 @@ body {
   text-align: center;
 }
 
-/* 🖊️ Input Box */
+/* 🖊️ Input Area */
 #sender-display {
   height: 55px;
   display: flex;
@@ -162,17 +164,15 @@ body {
   justify-content: center;
   margin-top: 12px;
 }
-
 .chat-controls {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 #input {
   flex: 1;
-  height: 40px;
+  height: 42px;
   padding: 0 14px;
   border-radius: 10px;
   border: none;
@@ -188,7 +188,7 @@ body {
 
 /* 📩 Send Button */
 #send-button {
-  height: 40px;
+  height: 42px;
   padding: 0 20px;
   background-color: #14213d;
   color: white;
@@ -215,6 +215,17 @@ body {
   transform: scale(1.25);
 }
 
+/* 🌈 Welcome Heading */
+.welcome-heading {
+  font-size: 2rem;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
 /* 🎚 Scrollbar Styling */
 #chat-display::-webkit-scrollbar {
   width: 6px;
@@ -237,20 +248,23 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 📱 Responsive */
-@media (max-width: 768px) {
+/* 📱 Responsive Media Queries */
+@media screen and (max-width: 768px) {
   #container {
     width: 100vw;
     height: 100vh;
     border-radius: 0;
-    padding: 6px;
+    padding: 8px;
   }
 
   #active-bar {
     flex-direction: column;
-    gap: 4px;
     font-size: 0.85rem;
-    text-align: center;
+    gap: 4px;
+  }
+
+  #input {
+    font-size: 0.95rem;
   }
 
   #emoji-btn {
@@ -261,16 +275,27 @@ body {
     padding: 0 16px;
   }
 
-  #input {
-    font-size: 0.95rem;
+  .msgs {
+    max-width: 90%;
   }
 }
-.welcome-heading {
-  font-size: 2rem;
-  text-align: center;
-  color: #ffffff;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+
+@media screen and (max-width: 480px) {
+  #self-msg, #other-msg {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  #input {
+    height: 38px;
+  }
+
+  #send-button {
+    height: 38px;
+    font-size: 0.9rem;
+  }
+
+  #chat-display {
+    gap: 10px;
+  }
 }
