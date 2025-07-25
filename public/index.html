@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PuruVerse</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.js"></script>
+</head>
+<body>
+
+  <!-- 🔴 Background Video -->
+  <video autoplay muted loop playsinline id="bgVideo">
+    <source src="video2.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- 🔵 Chat Container -->
+  <div id="container">
+    <div id="chat-display">
+      <!-- Messages will be injected here dynamically -->
+    </div>
+    
+<h1 class="welcome-heading">You’re Now in PuruVerse</h1>
+
+    <div id="sender-display">
+      <form id="send-msg">
+        <div class="chat-controls">
+          <button type="button" id="emoji-btn">😊</button>
+          <input type="text" id="input" placeholder="Your message goes here" />
+          <input type="submit" id="send-button" value="Send" />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 🟢 Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
